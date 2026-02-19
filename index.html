@@ -1,1 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ESP32 LED Control</title>
+</head>
+
+<body style="text-align:center; font-family:Arial">
+
+<h1>ESP32 LED Control</h1>
+
+<button onclick="ledOn()" style="padding:20px;font-size:20px">ON</button>
+<button onclick="ledOff()" style="padding:20px;font-size:20px">OFF</button>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyALtun0x7vzRCWPg9bNuI4aH0drGia2sVQ",
+  authDomain: "iot-smart-device.firebaseapp.com",
+  databaseURL: "https://iot-smart-device-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "iot-smart-device",
+  storageBucket: "iot-smart-device.firebasestorage.app",
+  messagingSenderId: "63050675207",
+  appId: "1:63050675207:web:1639a32f957342b465a6a2",
+  measurementId: "G-7WLK1Y65M0"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+function ledOn(){
+  db.ref("led").set("ON");
+}
+
+function ledOff(){
+  db.ref("led").set("OFF");
+}
+</script>
+
+</body>
+</html>
 
